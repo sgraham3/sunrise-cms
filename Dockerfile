@@ -2,7 +2,7 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-RUN apk add --no-cache python3 make g++
+RUN apk add --no-cache python3 make g++ xz
 
 COPY package*.json ./
 
