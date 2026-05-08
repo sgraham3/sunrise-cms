@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  sunrise-cms:
+    build: .
+    container_name: sunrise-cms
+    ports:
+      - "8080:8080"
+    environment:
+      NODE_ENV: production
+      PORT: 8080
+    volumes:
+      - ./data:/app/data
+      - ./database:/app/database
+    restart: unless-stopped
