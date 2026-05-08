@@ -6,11 +6,13 @@ services:
     container_name: sunrise-cms
 
     ports:
-      - "8080:8080"
+      - "9080:9000"
 
     environment:
       NODE_ENV: production
       PORT: 8080
+      LOGIN_USERNAME: admin
+      LOGIN_PASSWORD: admin
 
     volumes:
       - ./data:/app/data
