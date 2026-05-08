@@ -1,6 +1,6 @@
 services:
   sunrise-cms:
-      dockerfile: Dockerfile
+    image: ghcr.io/sgraham3/sunrise-cms:latest
     container_name: sunrise-cms
 
     ports:
