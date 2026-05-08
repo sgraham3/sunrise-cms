@@ -6,14 +6,27 @@ services:
     container_name: sunrise-cms
 
     ports:
-      - "8080:8080"
+      # Map host port 9080 to container port 8080
+      - "9080:8080"
 
     environment:
       NODE_ENV: production
       PORT: 8080
+      LOGIN_USERNAME: admin
+      LOGIN_PASSWORD: admin
+      # If your app uses Chromium/Puppeteer, sometimes you need to limit 
+      # memory overhead or specify the path here if not in the Dockerfile
+      # PUPPETEER_EXECUTABLE_PATH: /usr/bin/google-chrome-stable
 
     volumes:
+      # Ensure these directories exist on your host machine
       - ./data:/app/data
       - ./database:/app/database
+      # Optional: If you need a temp folder for Puppeteer downloads
+      - ./downloads:/app/downloads 
+
+    # Recommended for Puppeteer to prevent "Out of Memory" crashes 
+    # when rendering heavy pages in a container
+    shm_size: '2gb'
 
     restart: unless-stopped
